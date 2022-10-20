@@ -5,19 +5,18 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-한 두 문단으로 프로젝트 소개 글을 작성합니다.
 
 ![](../header.png)
 
-## 설치 방법
+## Quick Install
 
-OS X & 리눅스:
+OS X & Linux:
 
 ```sh
 npm install my-crazy-module --save
 ```
 
-윈도우:
+Windows:
 
 ```sh
 edit autoexec.bat
@@ -25,19 +24,20 @@ edit autoexec.bat
 
 ## Basic puzzle screenshot
 
-![basic_puzzle](https://user-images.githubusercontent.com/50310635/196859049-ac31e913-12fb-48b5-9f55-b17fac2b6e4d.gif)
+<img src="https://user-images.githubusercontent.com/50310635/196859049-ac31e913-12fb-48b5-9f55-b17fac2b6e4d.gif" >
 
 
 
-## 정보
+## Team Information
 
-이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
+Lee MinHyung – ss49132002@gmail.com
 
-XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할 수 있습니다.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+## License
 
-## 기여 방법
+MIT
+
+## Contribution
 
 1. (<https://github.com/yourname/yourproject/fork>)을 포크합니다.
 2. (`git checkout -b feature/fooBar`) 명령어로 새 브랜치를 만드세요.
