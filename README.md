@@ -32,6 +32,8 @@ edit autoexec.bat
 
 Lee MinHyung – ss49132002@gmail.com
 
+Yoon Jueun      – 00-10-21@naver.com
+
 
 ## License
 
