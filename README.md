@@ -26,7 +26,9 @@ edit autoexec.bat
 
 <img src="https://user-images.githubusercontent.com/50310635/196859049-ac31e913-12fb-48b5-9f55-b17fac2b6e4d.gif" >
 
+## Puzzle with random depth
 
+<img src="https://user-images.githubusercontent.com/50310635/197330919-afe73aed-826c-4d90-9639-052cbafe3505.gif" >
 
 ## Team Information
 
