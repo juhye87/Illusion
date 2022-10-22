@@ -1,38 +1,42 @@
 
 window.onload = function init() {
   var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(60, 1, 1, 1000);
-  camera.position.set(0, 0, 6);
+  var camera = new THREE.OrthographicCamera( -10, 10, 7, -7, 0, 50);
+  camera.position.set(0, 0, 10);
   var renderer = new THREE.WebGLRenderer({
     antialias: true
   });
-  renderer.setClearColor(0x808080);
+  renderer.setClearColor(0x108080);
   var canvas = renderer.domElement;
   document.body.appendChild(canvas);
 
   //var controls = new THREE.OrbitControls(camera, canvas);
 
-
+  var pieces = 8;
   var imageTexture = new THREE.TextureLoader().load( "resource/door.jpeg");
 
-  console.log(imageTexture);
-  //var texture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/UV_Grid_Sm.jpg');
-  var lineColor = new THREE.Color();
-  
-  var planeGeom = new THREE.PlaneBufferGeometry(2, 2);
+  var planeGeom = new THREE.PlaneBufferGeometry(pieces, pieces);
 
   var instancedGeom = new THREE.InstancedBufferGeometry();
   instancedGeom.attributes.position = planeGeom.attributes.position;
   instancedGeom.attributes.uv = planeGeom.attributes.uv;
   instancedGeom.index = planeGeom.index;
 
-  instancedGeom.addAttribute("instancePosition", new THREE.InstancedBufferAttribute(new Float32Array([-1.1, 1.1, 0, 1.1, 1.1, 0, -1.1, -1.1, 0, 1.1, -1.1, 0]), 3));
-  instancedGeom.addAttribute("instanceUv", new THREE.InstancedBufferAttribute(new Float32Array([0, 1, 1, 1, 0, 0, 1, 0]), 2));
+  var genPosition = generatePosition(pieces, 28);
+  var genUv = generateUv(pieces);
+  var genScale = generateScale(pieces, 0.2);
+
+  console.log(instancedGeom);
+  console.log(genPosition);
+
+  instancedGeom.addAttribute("instancePosition", new THREE.InstancedBufferAttribute(flatten(genPosition), 3));
+  instancedGeom.addAttribute("instanceUv", new THREE.InstancedBufferAttribute(flatten(genUv), 2));
+  instancedGeom.addAttribute("instanceScale", new THREE.InstancedBufferAttribute(flatten(genScale), 3))
 
   var material = new THREE.ShaderMaterial({
     uniforms: {
       texture1: { value: imageTexture },
-      textureDivision: { value: new THREE.Vector2(2, 2) },
+      textureDivision: { value: new THREE.Vector2(pieces, pieces) },
       time: { value: 0 }
     },
     vertexShader: `
@@ -41,6 +45,7 @@ window.onload = function init() {
     uniform vec2 textureDivision;
     uniform float time;
 
+    attribute vec3 instanceScale;
     attribute vec3 instancePosition;
     attribute vec2 instanceUv;
     
@@ -50,7 +55,8 @@ window.onload = function init() {
       vec2 slices = vec2(1.0) / textureDivision;
       vUv = slices * instanceUv + slices * uv;
       vec3 pos = position + instancePosition;
-      pos += normalize(instancePosition) * (sin(time) * 0.5 + 0.5);
+      pos = pos * instanceScale;
+      //pos += normalize(instancePosition);
       
       gl_Position = projectionMatrix * modelViewMatrix * vec4( pos, 1.0 );
     }
@@ -85,23 +91,60 @@ window.onload = function init() {
     var time = performance.now() / 1000;
     material.uniforms.time.value = time
     
-    const rot = time * 1;
+    const rot = time * 0.5;
 
-    console.log(material)
     instancedMesh.rotation.x = rot;
+    instancedMesh.rotation.y = rot;
     renderer.render(scene, camera);
     requestAnimationFrame(render);
   }
 
   function resize(renderer) {
     const canvas = renderer.domElement;
-    const width = 512;
-    const height = 512;
+    const width = 1920;
+    const height = 1080;
     const needResize = canvas.width !== width || canvas.height !== height;
     if (needResize) {
       renderer.setSize(width, height, false);
     }
     return needResize;
+  }
+
+  function generatePosition(pieces, scale) {
+    
+    var ret = [];
+    var division = 2 / (pieces - 1);
+    for(var divX = -1; divX <= 1; divX += division) {
+      for(var divY = 1; divY >= -1; divY -= division) {
+        var randDepth = Math.floor(Math.random() * (5 - (-5))) + -5;
+        var coord = vec3(divX * scale, divY * scale, randDepth);
+        ret.push(coord);
+      }
+    }
+    
+    return ret;
+  }
+  function generateUv(pieces) {
+    var ret = [];
+    var division = 1 / (pieces - 1);
+    for(var divX = 0; divX < pieces; divX += 1) {
+      for(var divY = pieces - 1; divY >= 0; divY -= 1) {
+        var coord = vec2(divX, divY);
+        
+        ret.push(coord);
+      }
+    }
+    return ret;
+  }
+
+  function generateScale(pieces, scale){
+    var ret = [];
+    for(var i = 0; i < Math.pow(pieces, 2); i++) {
+      var coord = vec3(scale, scale, 1);
+      ret.push(coord);
+    }
+
+    return ret;
   }
 
 }
