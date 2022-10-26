@@ -36,6 +36,7 @@ Lee MinHyung – ss49132002@gmail.com
 
 Yoon Jueun      – 00-10-21@naver.com
 
+Chai Hogi    - harrythegreat@gachon.ac.kr
 
 ## License
 
