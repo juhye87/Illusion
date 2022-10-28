@@ -5,7 +5,7 @@ window.onload = function init()
 	const renderer = new THREE.WebGLRenderer({canvas});
 	
 	// Earth params
-	var radius   = 0.5,
+	var radius   = 0.45,
 		segments = 32,
 		rotation = 6;  
 
@@ -47,10 +47,10 @@ window.onload = function init()
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshPhongMaterial({
-				map:         THREE.ImageUtils.loadTexture('images/2_no_clouds_4k.jpg'),
-				bumpMap:     THREE.ImageUtils.loadTexture('images/elev_bump_4k.jpg'),
+				map:         THREE.ImageUtils.loadTexture('image/globe/2_no_clouds_4k.jpg'),
+				bumpMap:     THREE.ImageUtils.loadTexture('image/globe/elev_bump_4k.jpg'),
 				bumpScale:   0.005,
-				specularMap: THREE.ImageUtils.loadTexture('images/water_4k.png'),
+				specularMap: THREE.ImageUtils.loadTexture('image/globe/water_4k.png'),
 				specular:    new THREE.Color('grey')								
 			})
 		);
@@ -60,7 +60,7 @@ window.onload = function init()
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius + 0.003, segments, segments),			
 			new THREE.MeshPhongMaterial({
-				map:         THREE.ImageUtils.loadTexture('images/fair_clouds_4k.png'),
+				map:         THREE.ImageUtils.loadTexture('image/globe/fair_clouds_4k.png'),
 				transparent: true
 			})
 		);		
@@ -70,7 +70,7 @@ window.onload = function init()
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments), 
 			new THREE.MeshBasicMaterial({
-				map:  THREE.ImageUtils.loadTexture('images/galaxy_starfield.png'), 
+				map:  THREE.ImageUtils.loadTexture('image/globe/galaxy_starfield.png'), 
 				side: THREE.BackSide
 			})
 		);
