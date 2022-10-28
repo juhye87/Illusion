@@ -6,7 +6,8 @@ window.onload = function init() {
   const aspect = 2;  // the canvas default
   const near = 0.1;
   const far = 200;
-  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  var camera = new THREE.OrthographicCamera( -10, 10, 7, -7, 0, 50);
+   camera.position.set(0, 0, 10);
 
 
   const rand1 = Math.random() * 10.0;
