@@ -1,0 +1,8 @@
+@font-face{
+    src: url("../font/nanum.ttf");
+    font-family: "nanum";
+}
+
+span {
+    font-family: "nanum";
+}
