@@ -1,8 +1,21 @@
 
 window.onload = function init() {
   var scene = new THREE.Scene();
-  var camera = new THREE.OrthographicCamera( -10, 10, 7, -7, 0, 50);
-  camera.position.set(0, 0, 10);
+
+  const fov = 50;
+  const aspect = 2;  // the canvas default
+  const near = 0.1;
+  const far = 200;
+  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+
+
+  const rand1 = Math.random() * 10.0;
+  const rand2 = Math.random() * 10.0;
+  const rand3 = Math.random() * 10.0;
+
+
+  camera.position.set(rand1, rand2, rand3);
+
   var renderer = new THREE.WebGLRenderer({
     antialias: true
   });
@@ -10,7 +23,15 @@ window.onload = function init() {
   var canvas = renderer.domElement;
   document.body.appendChild(canvas);
 
-  //var controls = new THREE.OrbitControls(camera, canvas);
+  
+  var controls = new THREE.TrackballControls(camera);
+   controls.rotateSpeed = 0.5; 
+   controls.zoomSpeed = 1.2; 
+   controls.minDistance = 1; 
+  
+
+   controls.panSpeed = 0.3;
+   controls.noPan="true";
 
   var pieces = 8;
   var imageTexture = new THREE.TextureLoader().load( "resource/door.jpeg");
@@ -26,8 +47,8 @@ window.onload = function init() {
   var genUv = generateUv(pieces);
   var genScale = generateScale(pieces, 0.2);
 
-  console.log(instancedGeom);
-  console.log(genPosition);
+  // console.log(instancedGeom);
+  // console.log(genPosition);
 
   instancedGeom.addAttribute("instancePosition", new THREE.InstancedBufferAttribute(flatten(genPosition), 3));
   instancedGeom.addAttribute("instanceUv", new THREE.InstancedBufferAttribute(flatten(genUv), 2));
@@ -88,13 +109,9 @@ window.onload = function init() {
       camera.aspect = canvas.clientWidth / canvas.clientHeight;
       camera.updateProjectionMatrix();
     }
-    var time = performance.now() / 1000;
-    material.uniforms.time.value = time
-    
-    const rot = time * 0.5;
+   
+    controls.update();
 
-    instancedMesh.rotation.x = rot;
-    instancedMesh.rotation.y = rot;
     renderer.render(scene, camera);
     requestAnimationFrame(render);
   }
@@ -146,5 +163,13 @@ window.onload = function init() {
 
     return ret;
   }
+
+
+  controls.addEventListener( "change", (event) => {  
+
+    // console.log( controls.object.position ); 
+    console.log( controls.object.position ); 
+
+  });
 
 }
