@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>ILLUSION</title>
+        <!-- 글꼴 적용 -->
+        <meta charset="utf-8">
+        <link href="font/fontStyle.css" rel="stylesheet">
+
+        <!-- 배경색 적용 -->
+        <style>
+            body {
+                background-color: beige;
+            }
+        </style>
+        
+        <!-- 여러 가지 적용 -->
+        <style>
+            #eiffel_Image {
+                text-align: center;
+                margin-top: 100px;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            #title {
+                color: black;
+                text-align: center;
+                font-size: 5em;
+            }
+
+            #subtitle1 {
+                text-align: center;
+                color: #e9c600;
+                font-size: 2.5em;
+                width: 100%;
+            }
+
+            #button {
+                text-align: center;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .button {
+                background-color: #2386bc;
+                border: none;
+                color: black;
+                font-family: "bing";
+                font-size: 30px;
+                padding: 5px 120px;
+                text-align: center;
+                text-decoration: none;
+                margin-left: 16px;
+                margin-right: 16px;
+                cursor: pointer;
+            }
+
+            .button:active {
+                background-color: #2386bc;
+            }
+            .button:hover {background-color: #ffbaaf}
+
+        </style>
+    </head>
+
+	<body>
+        <div id = "eiffel_Image"> <img src="image/eiffel_tower.jpeg" width = "500px" height = "330px"> </div>
+        <div id = "title"> <span> Eiffel Tower </span> </div>
+        <div id = "subtitle1"> <span> Select level </span> </div>
+        <div id = "button">
+            <input type = "button" value= "★" class = "button" onClick="location.href='puzzle1.html'"></button>
+            <input type = "button" value = "★★" class = "button" onClick="location.href='puzzle2.html'"></button>
+        </div>
+    </body>
+</html>
