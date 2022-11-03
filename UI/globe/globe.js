@@ -40,13 +40,13 @@ window.onload = function init()
 	// var pin_Eiffel = createPins('EiffelTower', (-0.4, -0.3, -0.2), (0.2,-0.8, 0.5));
 
 	// EiffelTower pin //
-	loader.load('./model/pin.gltf', function(Pin_Eiffel){
+	loader.load('./model/pin.gltf', function(gltf){
 	
-		pin_Eiffel = Pin_Eiffel.scene.children[0];
+		pin_Eiffel = gltf.scene.children[0];
 		pin_Eiffel.name = 'EiffelTower';
 		console.log(pin_Eiffel.name);
 		pin_Eiffel.scale.set(0.3,0.3,0.3);
-		pin_Eiffel.position.set(-0.4,-0.3,-0.2);
+		pin_Eiffel.position.set(0.4,-0.4,-0.3);
 		pin_Eiffel.rotation.set(0.2,-0.8,0.5);
 		scene.add(gltf.scene);
 		}, undefined, function (error) {
@@ -68,7 +68,7 @@ window.onload = function init()
 		var intersects = raycaster.intersectObjects( scene.children, true );
 
 		if (intersects.length > 0) {
-			console.log('Intersection:', intersects[0].object.getObjectByName())	;
+			console.log('Intersection:', intersects[0])	;
 			if (intersects[0].object.name === 'EiffelTower') {
 				console.log("click on EiffelTower");
 			}
