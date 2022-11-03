@@ -1,21 +1,19 @@
+var time = 0;
+
 
 window.onload = function init() {
   var scene = new THREE.Scene();
-
-  const fov = 50;
-  const aspect = 2;  // the canvas default
-  const near = 0.1;
-  const far = 200;
   var camera = new THREE.OrthographicCamera( -10, 10, 7, -7, 0, 50);
-   camera.position.set(0, 0, 10);
-
 
   const rand1 = Math.random() * 10.0;
   const rand2 = Math.random() * 10.0;
   const rand3 = Math.random() * 10.0;
 
 
-  camera.position.set(rand1, rand2, rand3);
+
+   camera.position.set(rand1, rand2, rand3);
+
+
 
   var renderer = new THREE.WebGLRenderer({
     antialias: true
@@ -28,8 +26,8 @@ window.onload = function init() {
   var controls = new THREE.TrackballControls(camera);
    controls.rotateSpeed = 0.5; 
    controls.zoomSpeed = 1.2; 
-   controls.minDistance = 1; 
-  
+   controls.minDistance = 2; 
+   controls.maxDistance = 8 ; 
 
    controls.panSpeed = 0.3;
    controls.noPan="true";
@@ -165,12 +163,101 @@ window.onload = function init() {
     return ret;
   }
 
+var tes = 0;
+
 
   controls.addEventListener( "change", (event) => {  
 
+
+    if(tes == 0){
+    start();
+    tes = 1;
+    }
     // console.log( controls.object.position ); 
     console.log( controls.object.position ); 
 
+
+
+    if(camera.position.x < 0.03 && camera.position.x > -0.03){
+
+      if(camera.position.y < 0.03 && camera.position.y > -0.03){
+
+      var result = "Solved in  ";
+
+      var mins = Math.floor(time/10/60);
+      var secs = Math.floor(time/10 % 60);
+      var hours = Math.floor(time/10/60/60);
+      var tenths = time % 10;
+      if(mins < 10){
+        mins = "0" + mins;
+      }
+      if(secs < 10){
+        secs = "0" + secs;
+      }
+      if(time==1){
+        tenths="0";
+      }
+
+      result = result + hours + ":" + mins + ":" + secs + ":" + tenths+ "0";
+
+      controls.noRotate = true;
+      controls.noZoom = true;
+
+      tempx = camera.position.x;
+      tempy = camera.position.y;
+
+
+      alert(result);
+      camera.position.set(0.01, 0.01, 8);
+      console.log( controls.object.position ); 
+
+      
+      reset();
+
+      window.open("./UI/main.html", "_self", "fullscreen" )
+
+    }
+
+  }
+
+
+
   });
 
+}
+var running = 0;
+function start(){
+   running=1;
+   increment();
+ }
+function pause(){
+  running = 0;
+  }
+
+function reset(){
+  time=0;
+  running = 0;
+  document.getElementById("output").innerHTML = "0:00:00:00";
+}
+function increment(){
+  if(running == 1){
+    setTimeout(function(){
+      time++;
+      var mins = Math.floor(time/10/60);
+      var secs = Math.floor(time/10 % 60);
+      var hours = Math.floor(time/10/60/60);
+      var tenths = time % 10;
+      if(mins < 10){
+        mins = "0" + mins;
+      }
+      if(secs < 10){
+        secs = "0" + secs;
+      }
+      if(time==1){
+        tenths="0";
+      }
+      document.getElementById("output").innerHTML = hours + ":" + mins + ":" + secs + ":" + tenths+ "0";
+      increment();
+    },100)
+  }
 }
