@@ -1,15 +1,66 @@
 
 <html>
+    <head>
+        <title>ILLUSION</title>
+        <!-- 글꼴 적용 -->
+        <meta charset="utf-8">
+        <link href="font/fontStyle.css" rel="stylesheet">
+    </head>
+    <style>
+        body {
+            background-image: url('image/galaxy_starfield.png');
+        }
+        .button
+			{
+				position:fixed;
+				width:100px;
+				height:20px;
+				border:1px solid white;
+				cursor:pointer;
+				background-color:rgba(101,77,165,0.7);
+				padding:5px;
+				text-align:center;
+				color:white;
+                font-family: "nanum";
+			}
+			#button1 { 
+				right: 5px;
+				top: 5px;
+			}
+			#button2 { 
+				right: 5px;
+				top: 45px;
+			}
+			#button3 { 
+				right: 5px;
+				top: 85px;
+			}
+            #button4 { 
+				right: 5px;
+				top: 125px;
+			}
+            #button5 { 
+				right: 5px;
+				top: 165px;
+			}
+    </style>
 <script type="text/javascript" src="js/three.min.js"></script>
-<script type="text/javascript" src="js/TrackballControls.js"></script>	
+<script type="text/javascript" src="js/TrackballControls.js"></script>
 <script type="text/javascript" src="js/GLTFLoader.js"></script>		
-<script type="text/javascript" src="js/OrbitControls.js"></script>		
+<script type="text/javascript" src="js/OrbitControls.js"></script>			
 <script type="text/javascript" src="globe.js"></script>
-<body>
+<body> 
 
-<canvas id="gl-canvas" width="1024" height="1024">
+<canvas id="gl-canvas" width="1800" height="1000">
 Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
-
+<audio id="bgmPlayer" loop autoplay>
+	<source src="./audio/210399405854D66025.mp3" type="audio/mp3">
+</audio>
+<div id=button1 class=button onClick="location.href='UI/pages/Select_EiffelTower.html'">France</div>
+<div id=button2 class=button onClick="location.href='UI/pages/Select_Sungnyemun.html'">Korea</div>
+<div id=button3 class=button onClick="location.href='UI/pages/Select_StatueOfLiberty.html'">US</div>   
+<div id=button4 class=button onClick="location.href='UI/pages/Select_Sphinx.html'">Egypt</div>
+<div id=button5 class=button onClick="location.href='UI/pages/Select_SydneyOperaHouse.html'">Australia</div> 
 </body>
 </html> 
