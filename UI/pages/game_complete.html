@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>ILLUSION</title>
+        <!-- 글꼴 적용 -->
+        <meta charset="utf-8">
+        <link href="font/fontStyle.css" rel="stylesheet">
+
+        <!-- 배경색 적용 -->
+        <style>
+            body {
+                background-color: beige;
+            }
+        </style>
+        
+        <!-- 여러 가지 적용 -->
+        <style>
+            #Image {
+                text-align: center;
+                margin-top: 120px;
+                width: 100%;
+            }
+
+            #title {
+                text-align: center;
+                color: #000000;
+                font-size: 3em;
+                width: 100%;
+            }
+
+            #subtitle {
+                text-align: center;
+                color: #ffd400;
+                font-size: 2.5em;
+                width: 100%;
+            }
+            
+            #button {
+                text-align: center;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .button {
+                background-color: #2386bc;
+                border: none;
+                color: black;
+                font-family: "bing";
+                font-size: 30px;
+                padding: 5px 80px;
+                text-align: center;
+                text-decoration: none;
+                margin-left: 16px;
+                margin-right: 16px;
+                cursor: pointer;
+            }
+
+            .button:active {
+                background-color: #2386bc;
+            }
+            .button:hover {background-color: #ffbaaf}
+
+        </style>
+    </head>
+
+	<body>
+        <audio id="audio" autoplay> <source src="./audio/victory-game-classic-arcade-game-116830.mp3"> </audio>
+        <div id = "Image"> <img src="image/finishImage.png" width = "240px" height = "240px"> </div>
+        <div id = "title"> <span> Puzzle </span> </div>
+        <div id = "subtitle"> <span> Complete! </span> </div>
+        <div id = "button">
+            <input type = "button" value= "Main Page" class = "button" onClick="location.href='./globe/globe.html.html'"></button>
+        </div>
+    </body>
+</html>
