@@ -33,7 +33,7 @@ window.onload = function init() {
    controls.noPan="true";
 
   var pieces = 8;
-  var imageTexture = new THREE.TextureLoader().load( "resource/door.jpeg");
+  var imageTexture = new THREE.TextureLoader().load( "../resource/eiffel_tower.jpeg");
 
   var planeGeom = new THREE.PlaneBufferGeometry(pieces, pieces);
 
