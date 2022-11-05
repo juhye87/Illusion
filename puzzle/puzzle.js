@@ -214,7 +214,7 @@ var tes = 0;
       
       reset();
 
-      window.open("./UI/pages/game_complete.html", "_self", "fullscreen" )
+      window.open("../UI/pages/game_complete.html", "_self", "fullscreen" )
 
     }
 
