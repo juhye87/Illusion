@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>ILLUSION</title>
+        <!-- 글꼴 적용 -->
+        <meta charset="utf-8">
+        <link href="/UI/font/fontStyle.css" rel="stylesheet">
+
+        <!-- 배경색 적용 -->
+        <style>
+            body {
+                background-color: beige;
+            }
+        </style>
+        
+        <!-- 여러 가지 적용 -->
+        <style>
+
+            body {
+                font-family: sans-serif;
+                height: 100%;
+                margin: 0;
+            }
+            
+            .container {
+                display: flex;
+                height: 100%;
+                flex-direction: column;
+            }
+            
+            .image-upload {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .selection_button {
+                display: flex;
+                justify-content: center;
+            }
+            
+            label {
+                cursor: pointer;
+                font-size: 1em;
+            }
+            
+            #chooseFile {
+                visibility: hidden;
+            }
+            
+            .fileContainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .fileInput {
+                display: flex;
+                align-items: center;
+                border-bottom: solid 2px black;
+                width: 60%;
+                height: 30px;
+            }
+            
+            #fileName {
+                margin-left: 5px;
+            }
+            
+            .buttonContainer {
+                width: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 10px;
+                background-color: black;
+                color: white;
+                border-radius: 30px;
+                padding: 10px;
+                font-size: 0.8em;
+            
+                cursor: pointer;
+            }
+            
+            .image-show {
+                z-index: -1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .img {
+                position: absolute;
+            }
+
+            #title {
+                color: black;
+                text-align: center;
+                font-size: 5em;
+            }
+
+            #subtitle {
+                text-align: center;
+                color: #e9c600;
+                font-size: 2.5em;
+                width: 100%;
+            }
+
+            #button {
+                text-align: center;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .button {
+                background-color: #2386bc;
+                border: none;
+                color: black;
+                font-family: "nanum";
+                font-size: 30px;
+                padding: 5px 120px;
+                text-decoration: none;
+                margin-left: 16px;
+                margin-right: 16px;
+                cursor: pointer;
+                position: absolute;
+                top: 800px;
+                left: 650px;
+            }
+
+            .button:active {
+                background-color: #2386bc;
+            }
+            .button:hover {background-color: #ffbaaf}
+
+        </style>
+    </head>
+
+	<body>
+        <div class="container">
+            <div class="image-upload" id="image-upload">
+    
+                <form method="post" enctype="multipart/form-data">
+                    <div class="selection_button">
+                        <label for="chooseFile">
+                            👉 CLICK HERE! 👈
+                        </label>
+                    </div>
+                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                </form>
+    
+                <div class="fileContainer">
+                    <div class="fileInput">
+                        <p>FILE NAME: </p>
+                        <p id="fileName"></p>
+                    </div>
+                    <div class="buttonContainer">
+                        <div class="submitButton" id="submitButton">SUBMIT</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-show" id="image-show"></div>
+        </div>
+        <div id = "title"> <span> Select Your Image </span> </div>
+        <div id = "subtitle"> <span> Select level </span> </div>
+        <div id = "button">
+            <input type = "button" value= "game start" class = "button" onClick="location.href='/puzzle/puzzle.html'"></button>
+        </div>
+        <script src="selection.js"></script>
+    </body>
+</html>
