@@ -1,6 +1,6 @@
 var submit = document.getElementById('submitButton');
 submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
-
+var path = "";
 function showImage() {
     var newImage = document.getElementById('image-show').lastElementChild;
     newImage.style.visibility = "visible";
@@ -16,7 +16,6 @@ function loadFile(input) {
 
     var name = document.getElementById('fileName');
     name.textContent = file.name;
-
     var newImage = document.createElement("img");
     newImage.setAttribute("class", 'img');
 
@@ -27,6 +26,12 @@ function loadFile(input) {
     newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지 숨기기
     newImage.style.objectFit = "contain";
 
+    path = newImage.src;
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
 };
+
+function passURI() {
+    window.location.href = "../../puzzle/puzzle_select.html?uri=" + path;
+
+}
