@@ -31,8 +31,9 @@ window.onload = function init() {
    controls.noPan="true";
 
   var pieces = 8;
-
-  var imageTexture = new THREE.TextureLoader().load( "../resource/flower.jpg" );
+  var uri = getParam("uri");
+  console.log(uri);
+  var imageTexture = new THREE.TextureLoader().load(uri);
 
   var planeGeom = new THREE.PlaneBufferGeometry(pieces, pieces);
 
@@ -238,6 +239,30 @@ function reset(){
   running = 0;
   document.getElementById("output").innerHTML = "0:00:00:00";
 }
+
+function getParam(sname) {
+
+  var params = location.search.substr(location.search.indexOf("?") + 1);
+
+  var sval = "";
+
+  params = params.split("&");
+
+  for (var i = 0; i < params.length; i++) {
+
+      temp = params[i].split("=");
+
+      if ([temp[0]] == sname) { sval = temp[1]; }
+
+  }
+
+  console.log(sval);
+
+  return sval;
+
+}
+
+
 function increment(){
   if(running == 1){
     setTimeout(function(){
