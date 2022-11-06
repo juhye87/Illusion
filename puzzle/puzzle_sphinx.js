@@ -33,7 +33,7 @@ window.onload = function init() {
    controls.noPan="true";
 
   var pieces = 8;
-  var imageTexture = new THREE.TextureLoader().load( "../resource/eiffel_tower.jpeg");
+  var imageTexture = new THREE.TextureLoader().load( "../resource/sphinx.jpeg");
 
   var planeGeom = new THREE.PlaneBufferGeometry(pieces, pieces);
 
@@ -214,7 +214,7 @@ var tes = 0;
       
       reset();
 
-      window.open("../UI/pages/game_complete.html", "_self", "fullscreen" )
+      window.open("/UI/pages/game_complete.html", "_self", "fullscreen" )
 
     }
 
