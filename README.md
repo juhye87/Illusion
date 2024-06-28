@@ -38,7 +38,7 @@ Yoon Jueun      – 00-10-21@naver.com
 
 Chai Hogi    - harrythegreat@gachon.ac.kr
 
-JuHye Kim     - epnjh0807@naver.com
+Kim JuHye     - epnjh0807@naver.com
 
 ## License
 
